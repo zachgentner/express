@@ -1,6 +1,7 @@
 // Import Express.js
 const express = require('express');
 const path = require('path');
+const hbs = require('express-handlebars');
 const logger = require('./middleware/logger');
 
 // Initialize an Express.js variable
@@ -8,6 +9,11 @@ const app = express();
 
 // Initializes the logger middleware
 // app.use(logger);
+
+// Handlebars Middleware
+app.engine('handlebars', engine());
+app.set('view engine', 'handlebars');
+app.set('views', './views');
 
 // Body Parses Middleware
 app.use(express.json());
